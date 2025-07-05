@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.custom-menu .ant-menu-item {
+  font-size: 18px; 
+}
+
+.custom-menu .ant-menu-item-icon {
+  font-size: 22px;
+}
