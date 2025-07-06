@@ -1,9 +1,7 @@
 import React from 'react'
 import './App.css'
-import AppHeader from './components/header'
-import AppFooter from './components/footer'
-import AppSideMenu from './components/sideMenu'
-import AppContent from './components/content'
+import AppHeader from './components/header'  
+import AppSideMenu from './components/sideMenu' 
 import { Space } from 'antd'
 import { Outlet } from 'react-router-dom'
 
@@ -15,8 +13,7 @@ function App() {
       <div className='w-full flex'>
         <AppSideMenu /> 
         <Outlet />
-      </div>
-      <AppFooter />
+      </div> 
     </div>
   )
 }

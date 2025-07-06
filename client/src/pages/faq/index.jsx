@@ -1,8 +1,8 @@
-import { Space, Table, Typography } from 'antd'
+import { Avatar, Space, Table, Typography } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { getOrders } from '../../services/fetchData';
 
-const Orders = () => {
+const FAQ = () => {
   const [data,setData] = useState();
   const [loading,setLoading] = useState(false);
   useEffect(()=>{
@@ -20,21 +20,26 @@ const Orders = () => {
 
   return (
     <Space size={20} direction='vertical'>
-      <Typography.Title level={4}>Orders</Typography.Title>
+      <Typography.Title level={4}>FAQ</Typography.Title>
       <Space>
-        <OrdersTable data={data} loading={loading} />
+        <FAQTable data={data} loading={loading} />
       </Space>
     </Space>
-  ) 
-}
+  )
+} 
 
-
-function OrdersTable({data, loading}){
+function FAQTable({data, loading}){
   return (
     <>
-      <Typography.Text>Orders</Typography.Text>
+      <Typography.Text>FAQ</Typography.Text>
       <Table
       columns={[
+        {
+          title: 'Thumbnail',
+          dataIndex: 'thumbnail',
+          render:(value)=> <Avatar src={value} /> 
+        }
+        ,
         {
           title: 'Title',
           dataIndex: 'title'
@@ -47,22 +52,6 @@ function OrdersTable({data, loading}){
           title: 'Price',
           dataIndex: 'price',
           render:(value)=><span>{'$'+value}</span>
-        },
-        {
-          title: 'Stock',
-          dataIndex: 'stock'
-        },
-        {
-          title: 'Rating',
-          dataIndex: 'rating'
-        },
-        {
-          title: 'Brand',
-          dataIndex: 'brand'
-        },
-        {
-          title: 'Category',
-          dataIndex: 'category'
         }
       ]}
       dataSource={data}
@@ -74,4 +63,4 @@ function OrdersTable({data, loading}){
   )
 } 
 
-export default Orders
+export default FAQ

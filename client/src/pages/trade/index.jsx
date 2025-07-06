@@ -2,7 +2,7 @@ import { Avatar, Space, Table, Typography } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { getOrders } from '../../services/fetchData';
 
-const Customers = () => {
+const Transaction = () => {
   const [data,setData] = useState();
   const [loading,setLoading] = useState(false);
   useEffect(()=>{
@@ -20,18 +20,18 @@ const Customers = () => {
 
   return (
     <Space size={20} direction='vertical'>
-      <Typography.Title level={4}>Customers</Typography.Title>
+      <Typography.Title level={4}>Transaction</Typography.Title>
       <Space>
-        <CustomersTable data={data} loading={loading} />
+        <TransactionTable data={data} loading={loading} />
       </Space>
     </Space>
   )
 } 
 
-function CustomersTable({data, loading}){
+function TransactionTable({data, loading}){
   return (
     <>
-      <Typography.Text>Customers</Typography.Text>
+      <Typography.Text>Transaction</Typography.Text>
       <Table
       columns={[
         {
@@ -63,4 +63,4 @@ function CustomersTable({data, loading}){
   )
 } 
 
-export default Customers
+export default Transaction

@@ -1,5 +1,5 @@
 import { DollarOutlined, ShoppingCartOutlined, ShoppingOutlined, UserOutlined } from '@ant-design/icons'
-import { Card, Space, Statistic, Table, Typography } from 'antd'
+import { Card, Space, Statistic, Table, Typography, Flex, Progress } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { getOrders } from '../../services/fetchData';
 import { VerticalBarChart } from '../../services/verticalBarChart';
@@ -8,11 +8,7 @@ import { PieChart } from '../../services/pieChart';
 
 const Dashboard = () => {
   const [orders,setOrders] = useState();
-  const [loading,setLoading] = useState(false);
-  const [ordersCount,setOrdersCount] = useState(1852);
-  const [customersCount,setCustomersCount] = useState(2400);
-  const [inventoryCount,setInventoryCount] = useState(12);
-  const [revenueCount,setRevenueCount] = useState(3000233);
+  const [loading,setLoading] = useState(false); 
   
   useEffect(()=>{
     setLoading(true);
@@ -26,46 +22,66 @@ const Dashboard = () => {
     }
     getData();
   },[])
-
-  const orderStyle = { color:'green', borderRadius: 30, backgroundColor: 'rgba(0,255,0,0.25)', fontSize: 40, padding: 12 }
-  const inventoryStyle = { color:'blue', borderRadius: 30, backgroundColor: 'rgba(0,0,255,0.5)', fontSize: 40, padding: 12 }
-  const customerStyle = { color:'purple', borderRadius: 30, backgroundColor: 'rgba(0,255,255,0.5)', fontSize: 40, padding: 12 }
-  const revenueStyle = { color:'red', borderRadius: 30, backgroundColor: 'rgba(255,0,0,0.5)', fontSize: 40, padding: 12 }
-
+ 
   return (
-    <Space size={20} direction='vertical'> 
-      <Typography.Title level={4}>Dashboard</Typography.Title>
-      <Space direction='horizontal'>
-          <DashboardCard title={'Orders'} value={ordersCount} icon={<ShoppingCartOutlined style={orderStyle} />} />
-          <DashboardCard title={'Inventory'} value={inventoryCount} icon={<ShoppingOutlined style={inventoryStyle} />} />
-          <DashboardCard title={'Customers'} value={customersCount} icon={<UserOutlined style={customerStyle} />} />
-          <DashboardCard title={'Revenue'} value={revenueCount} icon={<DollarOutlined style={revenueStyle} />} />
-      </Space> 
-      <Space>
-          <OrdersTable data={orders} loading={loading} />
-      </Space>
-      <Space> 
-          <VerticalBarChart
-            style={{width: 500, height: 350}}
-            data={""} 
-            title={'Orders Revenue'} 
-            position={'bottom'} 
-            labels={['January', 'February', 'March', 'April', 'May', 'June', 'July']} />
-          <PolarAreaChart style={{width: 500, height: 350}} />
-          <PieChart style={{width: 500, height: 350}} />
-      </Space>  
-    </Space>
+    <div className='w-full' > 
+      <div className="w-full flex flex-col pe-12 ps-12"> 
+        <h1 className='text-4xl w-full text-start font-semibold'>Dashboard</h1>
+        <div className='w-full flex justify-between mt-6 mb-6'>
+            <DashboardCard title={'Total Income'} value={'$25,024.32'} date={'Saturday, 30 Sep 2025'} index={'59%'} sub={'$4,593.23'} up={true} />
+            <DashboardCard title={'Total Outcome'} value={'$12,456.12'} date={'Saturday, 30 Sep 2025'} index={'12%'} sub={'$4,593.23'} up={false} />
+            <DashboardCard title={'Total Profit'} value={'$32,245.45'} date={'Saturday, 30 Sep 2025'} index={'4%'} sub={'$4,593.23'} up={true} />
+        </div> 
+        <Space>
+            <OrdersTable data={orders} loading={loading} />
+        </Space>
+        <Space> 
+            <VerticalBarChart
+              style={{width: 500, height: 350}}
+              data={""} 
+              title={'Orders Revenue'} 
+              position={'bottom'} 
+              labels={['January', 'February', 'March', 'April', 'May', 'June', 'July']} />
+            <PolarAreaChart style={{width: 500, height: 350}} />
+            <PieChart style={{width: 500, height: 350}} />
+        </Space>  
+        <Space className='w-full'>
+          <Flex gap="small" vertical>
+            <Progress percent={30} />
+            <Progress percent={50} status="active" />
+            <Progress percent={70} status="exception" />
+            <Progress percent={100} />
+            <Progress percent={50} showInfo={false} />
+          </Flex>
+        </Space>
+      </div>
+    </div>
   )
 }
 
-function DashboardCard({title, value, icon}){
+function DashboardCard({title, value, index, date, sub, up}){
   return (
-      <Card> 
-        <Space direction='horizontal'> 
-          {icon}
-          <Statistic title={title} value={value} /> 
-        </Space>
-      </Card>
+      <div className='min-w-1/3 border-2 border-black/10 rounded-lg p-6'> 
+        <h1 className='mb-12 font-semibold'>{title}</h1>
+        <div className='flex flex-col'> 
+          <div className='flex w-full mb-4'>
+            <div className='flex w-9/12'>
+              <h3 className='text-4xl font-semibold'>{value}</h3>
+            </div>
+            <div className='flex justify-end items-center w-3/12'>
+              <h5 className={`${up ? 'bg-green-300/25 text-green-700': 'bg-red-300/25 text-red-700'} text-sm font-semibold rounded-2xl p-2 text-center w-14`}>{index}</h5>
+            </div>
+          </div>
+          <div className='flex w-full mb-4'>
+            <div className='flex w-9/12'>
+              <h4 className='opacity-50'>{date}</h4>
+            </div>
+            <div className='flex justify-end w-3/12'>
+               <h4 className='font-semibold'>{sub}</h4>
+            </div>
+          </div> 
+        </div>
+      </div>
   )
 }
 

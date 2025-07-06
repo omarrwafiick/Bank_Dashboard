@@ -1,12 +1,14 @@
 import React from 'react'
-import { AppstoreOutlined, ShopOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons'
-import { Menu } from 'antd'
+import { AppstoreOutlined, SwitcherOutlined, DollarOutlined, WalletOutlined, 
+        NotificationOutlined,ShoppingOutlined, LikeOutlined, MessageOutlined,
+        LogoutOutlined   } from '@ant-design/icons'
+import { Menu, Typography } from 'antd'
 import { useNavigate } from 'react-router-dom'
-
+ 
 const AppSideMenu = () => {
   const navigate = useNavigate();
   return (
-    <div className='min-h-screen w-2/12 flex flex-col justify-start items-center border-r-2 border-black/10'>
+    <div className='min-h-screen w-2/12 flex flex-col justify-start items-center border-r-2 border-black/10'>  
         <Menu   
             className="w-7/12 custom-menu"
             onClick={(item)=>{ 
@@ -20,23 +22,51 @@ const AppSideMenu = () => {
                     key:'/'
                 },
                 {
-                    label:'Inventory',
-                    icon: <ShoppingCartOutlined />,
-                    key:'/inventory'
+                    label:'Category',
+                    icon: <ShoppingOutlined />,
+                    key:'/category'
                 },
                 {
-                    label:'Customers',
-                    icon: <UserOutlined />,
-                    key:'/customers'
+                    label:'Wallet',
+                    icon: <WalletOutlined />,
+                    key:'/wallet'
                 },
                 {
-                    label:'Orders',
-                    icon:<ShopOutlined />,
-                    key:'/orders'
+                    label:'Notification',
+                    icon:<NotificationOutlined />,
+                    key:'/notification'
+                },
+                {
+                    label:'Transaction',
+                    icon:<SwitcherOutlined   tlined />,
+                    key:'/transaction'
+                }
+                ,
+                {
+                    label:'Trade',
+                    icon:<DollarOutlined  />,
+                    key:'/trade'
+                }
+                ,
+                {
+                    label:'Support',
+                    icon:<LikeOutlined />,
+                    key:'/support'
+                }
+                ,
+                {
+                    label:'FAQ',
+                    icon:<MessageOutlined />,
+                    key:'/faq'
+                }
+                ,
+                {
+                    label:'Logout',
+                    icon:<LogoutOutlined />
                 }
             ]
         }> 
-        </Menu>
+        </Menu> 
     </div>
   )
 }

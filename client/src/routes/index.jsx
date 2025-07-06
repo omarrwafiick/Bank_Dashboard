@@ -1,10 +1,14 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from '../App';  
-import Dashboard from '../pages/dashboard';
-import Inventory from '../pages/inventory';
-import Orders from '../pages/orders';
-import Customers from '../pages/customers';
+import Dashboard from '../pages/dashboard'; 
+import Category from '../pages/category';
+import Wallet from '../pages/wallet';
+import Notification from '../pages/notification';
+import Transaction from '../pages/transaction';
+import Trade from '../pages/trade'; 
+import Support from '../pages/support';
+import FAQ from '../pages/faq';
 
 function AppRouter() {
   return (
@@ -12,9 +16,13 @@ function AppRouter() {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Dashboard />} />
-          <Route path="inventory" element={<Inventory />} />
-          <Route path="orders" element={<Orders />} />
-          <Route path="customers" element={<Customers />} />
+          <Route path="category" element={<Category />} />
+          <Route path="wallet" element={<Wallet />} />
+          <Route path="notification" element={<Notification />} />
+          <Route path="transaction" element={<Transaction />} />
+          <Route path="trade" element={<Trade />} />
+          <Route path="support" element={<Support />} />
+          <Route path="faq" element={<FAQ />} /> 
         </Route>
       </Routes>
     </BrowserRouter>

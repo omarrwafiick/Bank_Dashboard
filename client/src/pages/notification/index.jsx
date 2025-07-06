@@ -2,7 +2,7 @@ import { Space, Table, Typography } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { getOrders } from '../../services/fetchData';
 
-const Inventory = () => {
+const Notification = () => {
   const [data,setData] = useState();
   const [loading,setLoading] = useState(false);
   useEffect(()=>{
@@ -16,21 +16,23 @@ const Inventory = () => {
       ); 
     }
     getData();
-  },[])
+  },[]);
+
   return (
     <Space size={20} direction='vertical'>
-      <Typography.Title level={4}>Inventory</Typography.Title>
+      <Typography.Title level={4}>Notification</Typography.Title>
       <Space>
-        <InventoryTable data={data} loading={loading} />
+        <NotificationTable data={data} loading={loading} />
       </Space>
     </Space>
-  )
+  ) 
 }
 
-function InventoryTable({data, loading}){
+
+function NotificationTable({data, loading}){
   return (
     <>
-      <Typography.Text>Inventory</Typography.Text>
+      <Typography.Text>Notification</Typography.Text>
       <Table
       columns={[
         {
@@ -72,4 +74,4 @@ function InventoryTable({data, loading}){
   )
 } 
 
-export default Inventory
+export default Notification
