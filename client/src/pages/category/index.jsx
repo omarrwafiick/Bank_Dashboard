@@ -19,8 +19,7 @@ const Category = () => {
   },[]);
 
   return (
-    <Space size={20} direction='vertical'>
-      <Typography.Title level={4}>Category</Typography.Title>
+    <Space size={20} direction='vertical'> 
       <Space>
         <CategoryTable data={data} loading={loading} />
       </Space>

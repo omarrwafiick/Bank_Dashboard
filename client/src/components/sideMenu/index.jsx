@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 const AppSideMenu = () => {
   const navigate = useNavigate();
   return (
-    <div className='min-h-screen w-2/12 flex flex-col justify-start items-center border-r-2 border-black/10'>  
+    <div className='sticky top-0 bg-white min-h-screen w-2/12 flex flex-col justify-start items-center border-r-2 border-black/10'>  
         <Menu   
             className="w-7/12 custom-menu"
             onClick={(item)=>{ 

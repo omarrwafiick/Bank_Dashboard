@@ -19,8 +19,7 @@ const Support = () => {
   },[]);
 
   return (
-    <Space size={20} direction='vertical'>
-      <Typography.Title level={4}>Support</Typography.Title>
+    <Space size={20} direction='vertical'> 
       <Space>
         <SupportTable data={data} loading={loading} />
       </Space>

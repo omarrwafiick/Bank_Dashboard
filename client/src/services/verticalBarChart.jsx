@@ -42,12 +42,12 @@ export const buildChartData = (data = {}, labels) => {
       {
         label: 'Dataset 1',
         data: labels.map(() => Math.random() * 1000),
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: 'rgba(255, 145, 90, 0.31)',
       },
       {
         label: 'Dataset 2',
         data: labels.map(() => Math.random() * 1000),
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        backgroundColor: 'rgba(255, 145, 90, 0.937)',
       },
     ],
   };

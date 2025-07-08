@@ -19,8 +19,7 @@ const FAQ = () => {
   },[]);
 
   return (
-    <Space size={20} direction='vertical'>
-      <Typography.Title level={4}>FAQ</Typography.Title>
+    <Space size={20} direction='vertical'> 
       <Space>
         <FAQTable data={data} loading={loading} />
       </Space>

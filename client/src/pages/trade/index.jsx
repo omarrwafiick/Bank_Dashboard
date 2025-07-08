@@ -19,8 +19,7 @@ const Transaction = () => {
   },[]);
 
   return (
-    <Space size={20} direction='vertical'>
-      <Typography.Title level={4}>Transaction</Typography.Title>
+    <Space size={20} direction='vertical'> 
       <Space>
         <TransactionTable data={data} loading={loading} />
       </Space>

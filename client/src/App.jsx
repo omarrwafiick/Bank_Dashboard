@@ -12,7 +12,9 @@ function App() {
       <AppHeader /> 
       <div className='w-full flex'>
         <AppSideMenu /> 
-        <Outlet />
+        <div className="w-full flex pe-12 ps-12"> 
+          <Outlet />
+        </div>
       </div> 
     </div>
   )

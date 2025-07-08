@@ -19,8 +19,7 @@ const Notification = () => {
   },[]);
 
   return (
-    <Space size={20} direction='vertical'>
-      <Typography.Title level={4}>Notification</Typography.Title>
+    <Space size={20} direction='vertical'> 
       <Space>
         <NotificationTable data={data} loading={loading} />
       </Space>
